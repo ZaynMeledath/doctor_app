@@ -60,7 +60,7 @@ class _HomeScreenState extends State<HomeScreen> {
           child: IconButton(
             onPressed: () {},
             icon: const Icon(
-              Icons.notifications,
+              Icons.notifications_outlined,
             ),
             splashRadius: kRadius,
           ),
@@ -77,7 +77,7 @@ class _HomeScreenState extends State<HomeScreen> {
           child: IconButton(
             onPressed: () {},
             icon: const Icon(
-              Icons.favorite,
+              Icons.favorite_outline,
             ),
             splashRadius: kRadius,
           ),
@@ -143,12 +143,64 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
       child: Column(
         children: [
-          ClipRRect(
-            borderRadius: BorderRadius.circular(kRadius),
-            child: Image.asset(
-              'assets/images/avatar.png',
-              fit: BoxFit.cover,
-            ),
+          Row(
+            children: [
+              ClipRRect(
+                borderRadius: BorderRadius.circular(kRadius),
+                child: Image.asset(
+                  'assets/images/avatar.png',
+                  fit: BoxFit.cover,
+                ),
+              ),
+              //--------------------Name and Details--------------------//
+              Column(
+                children: [
+                  Text(
+                    'Dr. Johny Sins',
+                    style: subTitleTextStyle(),
+                  ),
+                  SizedBox(height: 2.h()),
+                  Row(
+                    children: [
+                      Text(
+                        'Cardiologist',
+                        style: bodyTextStyle(),
+                      ),
+                      SizedBox(width: 20.w()),
+                      Text(
+                        'MIMS Hospital',
+                        style: bodyTextStyle(),
+                      ),
+                    ],
+                  ),
+                  Row(
+                    children: [
+                      Icon(
+                        Icons.star,
+                        color: Colors.yellow,
+                        size: 24.w(),
+                      ),
+                      Text(
+                        '4.9',
+                        style: bodyTextStyle(),
+                      ),
+                      SizedBox(width: 20.w()),
+                      Text(
+                        '12PM - 3PM',
+                        style: bodyTextStyle(),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+              const Expanded(
+                child: SizedBox(),
+              ),
+              Icon(
+                Icons.favorite_outline,
+                size: 24.w(),
+              )
+            ],
           ),
         ],
       ),
