@@ -1,3 +1,4 @@
+import 'package:doctor_app/utils/screen_size.dart';
 import 'package:doctor_app/views/home_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -10,6 +11,8 @@ class DoctorApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    getInitialScreenSize(context: context);
+
     return MaterialApp(
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.teal),

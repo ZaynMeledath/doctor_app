@@ -1,3 +1,4 @@
+import 'package:doctor_app/constants/constants.dart';
 import 'package:flutter/material.dart' show Size, MediaQuery, BuildContext;
 
 Size realScreenSize = const Size(0, 0);
@@ -16,6 +17,7 @@ void getInitialScreenSize({required BuildContext context}) {
   if (screenSize.height < screenSize.width * 2) {
     screenSize = Size((screenSize.height / 2).clamp(0, 550), screenSize.height);
   }
+  constantsInit();
 }
 
 //====================Responsive Extension on double====================//

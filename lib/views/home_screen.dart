@@ -16,13 +16,27 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        children: [
-          _buildHeader(),
-          _buildDateAndTitle(),
-          _buildSearchField(),
-          _buildDoctorsList(),
-        ],
+      body: SafeArea(
+        child: Padding(
+          padding: EdgeInsets.symmetric(
+            horizontal: 16.w(),
+          ),
+          child: Column(
+            children: [
+              SizedBox(height: 10.h()),
+              _buildHeader(),
+              SizedBox(height: 20.h()),
+              Align(
+                alignment: Alignment.centerLeft,
+                child: _buildDateAndTitle(),
+              ),
+              SizedBox(height: 10.h()),
+              _buildSearchField(),
+              SizedBox(height: 20.h()),
+              _buildDoctorsList(),
+            ],
+          ),
+        ),
       ),
     );
   }
@@ -31,8 +45,8 @@ class _HomeScreenState extends State<HomeScreen> {
     return Row(
       children: [
         SizedBox(
-          width: 50.w(),
-          height: 50.w(),
+          width: 100.w(),
+          height: 100.w(),
           child: ClipRRect(
             borderRadius: BorderRadius.circular(kRadius),
             child: Image.asset(
@@ -59,8 +73,9 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
           child: IconButton(
             onPressed: () {},
-            icon: const Icon(
+            icon: Icon(
               Icons.notifications_outlined,
+              size: 28.w(),
             ),
             splashRadius: kRadius,
           ),
@@ -76,8 +91,9 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
           child: IconButton(
             onPressed: () {},
-            icon: const Icon(
+            icon: Icon(
               Icons.favorite_outline,
+              size: 28.w(),
             ),
             splashRadius: kRadius,
           ),
@@ -92,6 +108,7 @@ class _HomeScreenState extends State<HomeScreen> {
     final month = months[dateTime.month];
     final date = dateTime.day;
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
           '$weekDay, $month $date',
@@ -100,7 +117,7 @@ class _HomeScreenState extends State<HomeScreen> {
         SizedBox(height: 15.h()),
         Text(
           "Let's find your doctor",
-          style: subTitleTextStyle(),
+          style: titleTextStyle(),
         ),
       ],
     );
@@ -123,7 +140,9 @@ class _HomeScreenState extends State<HomeScreen> {
       child: ListView.builder(
         itemCount: 5,
         itemBuilder: (context, index) {
-          return _buildDoctorCard();
+          return Padding(
+              padding: EdgeInsets.only(bottom: 15.h()),
+              child: _buildDoctorCard());
         },
       ),
     );
@@ -136,30 +155,38 @@ class _HomeScreenState extends State<HomeScreen> {
         vertical: 10.h(),
       ),
       decoration: BoxDecoration(
+        color: themeColor.withAlpha(10),
         borderRadius: BorderRadius.circular(kRadius),
         border: Border.all(
-          color: themeColor,
+          color: Colors.black54,
         ),
       ),
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Row(
             children: [
-              ClipRRect(
-                borderRadius: BorderRadius.circular(kRadius),
-                child: Image.asset(
-                  'assets/images/avatar.png',
-                  fit: BoxFit.cover,
+              SizedBox(
+                width: 70.w(),
+                height: 70.w(),
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(kRadius),
+                  child: Image.asset(
+                    'assets/images/avatar.jpg',
+                    fit: BoxFit.cover,
+                  ),
                 ),
               ),
+              SizedBox(width: 12.w()),
               //--------------------Name and Details--------------------//
               Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
                     'Dr. Johny Sins',
                     style: subTitleTextStyle(),
                   ),
-                  SizedBox(height: 2.h()),
+                  SizedBox(height: 4.h()),
                   Row(
                     children: [
                       Text(
@@ -173,6 +200,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                     ],
                   ),
+                  SizedBox(height: 4.h()),
                   Row(
                     children: [
                       Icon(
@@ -198,9 +226,27 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
               Icon(
                 Icons.favorite_outline,
-                size: 24.w(),
+                size: 26.w(),
               )
             ],
+          ),
+          SizedBox(height: 15.h()),
+          Container(
+            padding: EdgeInsets.symmetric(
+              horizontal: 12.w(),
+              vertical: 6.w(),
+            ),
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(kRadius),
+              border: Border.all(
+                color: themeColor,
+              ),
+            ),
+            child: Text(
+              'Appointment',
+              style: subTitleTextStyle(),
+            ),
           ),
         ],
       ),
