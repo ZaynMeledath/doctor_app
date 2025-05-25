@@ -1,6 +1,7 @@
 import 'package:doctor_app/utils/screen_size.dart';
-import 'package:doctor_app/views/home_screen.dart';
+import 'package:doctor_app/views/main_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get_navigation/src/root/get_material_app.dart';
 
 void main() {
   runApp(const DoctorApp());
@@ -13,12 +14,12 @@ class DoctorApp extends StatelessWidget {
   Widget build(BuildContext context) {
     getInitialScreenSize(context: context);
 
-    return MaterialApp(
+    return GetMaterialApp(
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.teal),
         scaffoldBackgroundColor: Colors.white,
       ),
-      home: const HomeScreen(),
+      home: const MainScreen(),
     );
   }
 }

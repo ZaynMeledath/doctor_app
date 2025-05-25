@@ -1,7 +1,9 @@
 import 'package:doctor_app/constants/constants.dart';
 import 'package:doctor_app/utils/custom_text_style.dart';
 import 'package:doctor_app/utils/screen_size.dart';
+import 'package:doctor_app/views/doctor_details_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -23,7 +25,7 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
           child: Column(
             children: [
-              SizedBox(height: 10.h()),
+              SizedBox(height: 18.h()),
               _buildHeader(),
               SizedBox(height: 20.h()),
               Align(
@@ -55,10 +57,13 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
           ),
         ),
-        SizedBox(width: 20.w()),
-        Text(
+        SizedBox(width: 15.w()),
+        MyText(
           'Hi Ajay!',
-          style: subTitleTextStyle(),
+          style: titleTextStyle(
+            fontSize: 20.w(),
+            fontWeight: FontWeight.w600,
+          ),
         ),
         const Expanded(
           child: SizedBox(),
@@ -110,12 +115,12 @@ class _HomeScreenState extends State<HomeScreen> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
+        MyText(
           '$weekDay, $month $date',
           style: subTitleTextStyle(),
         ),
         SizedBox(height: 15.h()),
-        Text(
+        MyText(
           "Let's find your doctor",
           style: titleTextStyle(),
         ),
@@ -141,114 +146,141 @@ class _HomeScreenState extends State<HomeScreen> {
         itemCount: 5,
         itemBuilder: (context, index) {
           return Padding(
-              padding: EdgeInsets.only(bottom: 15.h()),
-              child: _buildDoctorCard());
+            padding: EdgeInsets.only(bottom: 15.h()),
+            child: _buildDoctorCard(index: index),
+          );
         },
       ),
     );
   }
 
-  Widget _buildDoctorCard() {
-    return Container(
-      padding: EdgeInsets.symmetric(
-        horizontal: 12.w(),
-        vertical: 10.h(),
-      ),
-      decoration: BoxDecoration(
-        color: themeColor.withAlpha(10),
-        borderRadius: BorderRadius.circular(kRadius),
-        border: Border.all(
-          color: Colors.black54,
+  Widget _buildDoctorCard({
+    required int index,
+  }) {
+    return InkWell(
+      borderRadius: BorderRadius.circular(kRadius),
+      onTap: () => Get.to(() => DoctorDetailsScreen(index: index)),
+      child: Container(
+        padding: EdgeInsets.symmetric(
+          horizontal: 14.w(),
+          vertical: 16.h(),
         ),
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Row(
-            children: [
-              SizedBox(
-                width: 70.w(),
-                height: 70.w(),
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(kRadius),
-                  child: Image.asset(
-                    'assets/images/avatar.jpg',
-                    fit: BoxFit.cover,
+        decoration: BoxDecoration(
+          color: themeColor.withAlpha(10),
+          borderRadius: BorderRadius.circular(kRadius),
+          border: Border.all(
+            color: Colors.black54,
+          ),
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                SizedBox(
+                  width: 70.w(),
+                  height: 70.w(),
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(kRadius),
+                    child: Hero(
+                      tag: 'doctor_avatar$index',
+                      child: Image.asset(
+                        'assets/images/doctor_avatar.jpg',
+                        fit: BoxFit.cover,
+                      ),
+                    ),
                   ),
                 ),
-              ),
-              SizedBox(width: 12.w()),
-              //--------------------Name and Details--------------------//
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    'Dr. Johny Sins',
+                SizedBox(width: 12.w()),
+                //--------------------Name and Details--------------------//
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    MyText(
+                      'Dr. Maria John',
+                      style: subTitleTextStyle(),
+                    ),
+                    SizedBox(height: 8.h()),
+                    Row(
+                      children: [
+                        MyText(
+                          'Cardiologist',
+                          style: bodyTextStyle(),
+                        ),
+                        SizedBox(width: 20.w()),
+                        MyText(
+                          'MIMS Hospital',
+                          style: bodyTextStyle(),
+                        ),
+                      ],
+                    ),
+                    SizedBox(height: 8.h()),
+                    Row(
+                      children: [
+                        Icon(
+                          Icons.star,
+                          color: Colors.yellow,
+                          size: 24.w(),
+                        ),
+                        MyText(
+                          '4.9',
+                          style: bodyTextStyle(),
+                        ),
+                        SizedBox(width: 20.w()),
+                        MyText(
+                          '12PM - 3PM',
+                          style: bodyTextStyle(),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+                const Expanded(
+                  child: SizedBox(),
+                ),
+                Icon(
+                  Icons.favorite_outline,
+                  size: 28.w(),
+                  color: themeColor,
+                )
+              ],
+            ),
+            SizedBox(height: 25.h()),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Container(
+                  padding: EdgeInsets.symmetric(
+                    horizontal: 12.w(),
+                    vertical: 6.w(),
+                  ),
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(kRadius),
+                    border: Border.all(
+                      color: themeColor,
+                    ),
+                    boxShadow: const [
+                      BoxShadow(
+                        color: themeColor,
+                        offset: Offset(-.5, 1),
+                      ),
+                    ],
+                  ),
+                  child: MyText(
+                    'Appointment',
                     style: subTitleTextStyle(),
                   ),
-                  SizedBox(height: 4.h()),
-                  Row(
-                    children: [
-                      Text(
-                        'Cardiologist',
-                        style: bodyTextStyle(),
-                      ),
-                      SizedBox(width: 20.w()),
-                      Text(
-                        'MIMS Hospital',
-                        style: bodyTextStyle(),
-                      ),
-                    ],
-                  ),
-                  SizedBox(height: 4.h()),
-                  Row(
-                    children: [
-                      Icon(
-                        Icons.star,
-                        color: Colors.yellow,
-                        size: 24.w(),
-                      ),
-                      Text(
-                        '4.9',
-                        style: bodyTextStyle(),
-                      ),
-                      SizedBox(width: 20.w()),
-                      Text(
-                        '12PM - 3PM',
-                        style: bodyTextStyle(),
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-              const Expanded(
-                child: SizedBox(),
-              ),
-              Icon(
-                Icons.favorite_outline,
-                size: 26.w(),
-              )
-            ],
-          ),
-          SizedBox(height: 15.h()),
-          Container(
-            padding: EdgeInsets.symmetric(
-              horizontal: 12.w(),
-              vertical: 6.w(),
+                ),
+                MyText(
+                  '\$35',
+                  style: titleTextStyle(),
+                ),
+              ],
             ),
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(kRadius),
-              border: Border.all(
-                color: themeColor,
-              ),
-            ),
-            child: Text(
-              'Appointment',
-              style: subTitleTextStyle(),
-            ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

@@ -2,6 +2,28 @@ import 'package:doctor_app/constants/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+class MyText extends StatelessWidget {
+  final String text;
+  final TextAlign? textAlign;
+  final TextStyle? style;
+  const MyText(
+    this.text, {
+    this.textAlign,
+    this.style,
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      text,
+      textScaler: TextScaler.noScaling,
+      textAlign: textAlign,
+      style: style ?? bodyTextStyle(),
+    );
+  }
+}
+
 TextStyle titleTextStyle({
   double? fontSize,
   FontWeight? fontWeight,
