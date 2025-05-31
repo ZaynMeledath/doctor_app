@@ -1,4 +1,5 @@
 import 'package:doctor_app/constants/constants.dart';
+import 'package:doctor_app/model/doctor_model.dart';
 import 'package:doctor_app/utils/custom_text_style.dart';
 import 'package:doctor_app/utils/screen_size.dart';
 import 'package:doctor_app/views/doctor_details_screen.dart';
@@ -159,7 +160,20 @@ class _HomeScreenState extends State<HomeScreen> {
   }) {
     return InkWell(
       borderRadius: BorderRadius.circular(kRadius),
-      onTap: () => Get.to(() => DoctorDetailsScreen(index: index)),
+      onTap: () => Get.to(
+        () => DoctorDetailsScreen(
+          index: index,
+          doctorModel: DoctorModel(
+              name: 'Dr. Maria John',
+              specialization: 'Neuro Surgeon',
+              hospital: 'MIMS',
+              experience: 5,
+              totalPatients: 108,
+              totalReviews: 85,
+              description:
+                  'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet.'),
+        ),
+      ),
       child: Container(
         padding: EdgeInsets.symmetric(
           horizontal: 14.w(),
