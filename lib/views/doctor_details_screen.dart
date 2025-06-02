@@ -56,6 +56,7 @@ class DoctorDetailsScreen extends StatelessWidget {
     );
   }
 
+//====================Title and Details====================//
   Widget _buildTitleAndDetails() {
     return Column(
       children: [
@@ -88,7 +89,7 @@ class DoctorDetailsScreen extends StatelessWidget {
         ),
         MyText(
           doctorModel.specialization.toString(),
-          style: subTitleTextStyle(),
+          style: subtitleTextStyle(),
         ),
         SizedBox(height: 25.h()),
         Row(
@@ -127,6 +128,7 @@ class DoctorDetailsScreen extends StatelessWidget {
     );
   }
 
+//====================Doctor Experience Card====================//
   Widget _buildDoctorExperienceCard({
     required String title,
     required String value,
@@ -163,6 +165,7 @@ class DoctorDetailsScreen extends StatelessWidget {
     );
   }
 
+//====================Doctor Description====================//
   Widget _buildDescription() {
     return Expanded(
       child: ListView(
@@ -178,6 +181,7 @@ class DoctorDetailsScreen extends StatelessWidget {
     );
   }
 
+//====================Appointment Button====================//
   Widget _buildAppointmentButton() {
     return Container(
       width: double.maxFinite,
@@ -188,7 +192,7 @@ class DoctorDetailsScreen extends StatelessWidget {
       child: Center(
         child: MyText(
           'Make an Appointment',
-          style: subTitleTextStyle(),
+          style: subtitleTextStyle(),
         ),
       ),
     );

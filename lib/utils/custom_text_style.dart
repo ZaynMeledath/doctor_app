@@ -2,6 +2,7 @@ import 'package:doctor_app/constants/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+//====================Custom Text Class====================//
 class MyText extends StatelessWidget {
   final String text;
   final TextAlign? textAlign;
@@ -24,6 +25,7 @@ class MyText extends StatelessWidget {
   }
 }
 
+//====================Title====================//
 TextStyle titleTextStyle({
   double? fontSize,
   FontWeight? fontWeight,
@@ -37,7 +39,8 @@ TextStyle titleTextStyle({
   );
 }
 
-TextStyle subTitleTextStyle({
+//====================Subtitle====================//
+TextStyle subtitleTextStyle({
   double? fontSize,
   FontWeight? fontWeight,
   Color? color,
@@ -50,6 +53,7 @@ TextStyle subTitleTextStyle({
   );
 }
 
+//====================Body====================//
 TextStyle bodyTextStyle({
   double? fontSize,
   FontWeight? fontWeight,

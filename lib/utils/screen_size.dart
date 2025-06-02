@@ -6,6 +6,7 @@ Size screenSize = const Size(0, 0);
 const defaultScreenSize = Size(400, 900);
 final defaultAspectRatio = defaultScreenSize.width / defaultScreenSize.height;
 
+//====================Initial Screen Size====================//
 void getInitialScreenSize({required BuildContext context}) {
   screenSize = MediaQuery.of(context).size;
   final safeArea = MediaQuery.of(context).padding.top;
@@ -22,6 +23,7 @@ void getInitialScreenSize({required BuildContext context}) {
 
 //====================Responsive Extension on double====================//
 extension ToResponsiveDouble on double {
+//====================Width====================//
   double w() {
     final percentageValue = this / defaultScreenSize.width;
 
@@ -38,6 +40,7 @@ extension ToResponsiveDouble on double {
     return calculatedWidth;
   }
 
+//====================Height====================//
   double h() {
     final percentageValue = this / defaultScreenSize.height;
 
@@ -57,6 +60,7 @@ extension ToResponsiveDouble on double {
 
 //====================Responsive Extension on int====================//
 extension ToResponsiveInt on int {
+//====================Width====================//
   double w() {
     final percentageValue = this / defaultScreenSize.width;
 
@@ -73,6 +77,7 @@ extension ToResponsiveInt on int {
     return calculatedWidth;
   }
 
+//====================Height====================//
   double h() {
     final percentageValue = this / defaultScreenSize.height;
 

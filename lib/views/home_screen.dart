@@ -44,6 +44,7 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
+//====================Header====================//
   Widget _buildHeader() {
     return Row(
       children: [
@@ -108,6 +109,7 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
+//====================Date and Title====================//
   Widget _buildDateAndTitle() {
     final dateTime = DateTime.now();
     final weekDay = weekDays[dateTime.weekday];
@@ -118,7 +120,7 @@ class _HomeScreenState extends State<HomeScreen> {
       children: [
         MyText(
           '$weekDay, $month $date',
-          style: subTitleTextStyle(),
+          style: subtitleTextStyle(),
         ),
         SizedBox(height: 15.h()),
         MyText(
@@ -129,6 +131,7 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
+//====================Search Field====================//
   Widget _buildSearchField() {
     return TextFormField(
       controller: _searchController,
@@ -141,6 +144,7 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
+//====================Doctors List====================//
   Widget _buildDoctorsList() {
     return Expanded(
       child: ListView.builder(
@@ -155,6 +159,7 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
+//====================Doctor Card====================//
   Widget _buildDoctorCard({
     required int index,
   }) {
@@ -213,7 +218,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   children: [
                     MyText(
                       'Dr. Maria John',
-                      style: subTitleTextStyle(),
+                      style: subtitleTextStyle(),
                     ),
                     SizedBox(height: 8.h()),
                     Row(
@@ -284,7 +289,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                   child: MyText(
                     'Appointment',
-                    style: subTitleTextStyle(),
+                    style: subtitleTextStyle(),
                   ),
                 ),
                 MyText(
