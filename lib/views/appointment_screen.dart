@@ -1,4 +1,4 @@
-import 'package:doctor_app/utils/custom_text_style.dart';
+import 'package:doctor_app/utils/widgets/custom_text_style.dart';
 import 'package:doctor_app/utils/widgets/my_app_bar.dart';
 import 'package:flutter/material.dart';
 

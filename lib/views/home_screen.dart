@@ -1,6 +1,6 @@
 import 'package:doctor_app/constants/constants.dart';
 import 'package:doctor_app/model/doctor_model.dart';
-import 'package:doctor_app/utils/custom_text_style.dart';
+import 'package:doctor_app/utils/widgets/custom_text_style.dart';
 import 'package:doctor_app/utils/screen_size.dart';
 import 'package:doctor_app/views/doctor_details_screen.dart';
 import 'package:flutter/material.dart';
@@ -188,7 +188,7 @@ class _HomeScreenState extends State<HomeScreen> {
           color: themeColor.withAlpha(10),
           borderRadius: BorderRadius.circular(kRadius),
           border: Border.all(
-            color: Colors.black54,
+            color: Colors.black.withAlpha(40),
           ),
         ),
         child: Column(

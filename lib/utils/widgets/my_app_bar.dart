@@ -1,4 +1,4 @@
-import 'package:doctor_app/utils/custom_text_style.dart';
+import 'package:doctor_app/utils/widgets/custom_text_style.dart';
 import 'package:doctor_app/utils/flight_shuttle_builder.dart';
 import 'package:doctor_app/utils/screen_size.dart';
 import 'package:flutter/material.dart';
