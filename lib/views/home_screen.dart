@@ -71,6 +71,7 @@ class _HomeScreenState extends State<HomeScreen> {
           child: SizedBox(),
         ),
         Container(
+          padding: EdgeInsets.all(8.w()),
           decoration: BoxDecoration(
             color: Colors.transparent,
             borderRadius: BorderRadius.circular(kRadius),
@@ -78,17 +79,14 @@ class _HomeScreenState extends State<HomeScreen> {
               color: Colors.black54,
             ),
           ),
-          child: IconButton(
-            onPressed: () {},
-            icon: Icon(
-              Icons.notifications_outlined,
-              size: 28.w(),
-            ),
-            splashRadius: kRadius,
+          child: Icon(
+            Icons.notifications_outlined,
+            size: 28.w(),
           ),
         ),
         SizedBox(width: 6.w()),
         Container(
+          padding: EdgeInsets.all(8.w()),
           decoration: BoxDecoration(
             color: Colors.transparent,
             borderRadius: BorderRadius.circular(kRadius),
@@ -96,13 +94,9 @@ class _HomeScreenState extends State<HomeScreen> {
               color: Colors.black54,
             ),
           ),
-          child: IconButton(
-            onPressed: () {},
-            icon: Icon(
-              Icons.favorite_outline,
-              size: 28.w(),
-            ),
-            splashRadius: kRadius,
+          child: Icon(
+            Icons.favorite_outline,
+            size: 28.w(),
           ),
         ),
       ],
